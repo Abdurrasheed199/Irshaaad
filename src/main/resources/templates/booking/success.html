@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Welcome to Fly Right Airline-Booking Successfully</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+</head>
+<body>
+
+<main layout:fragment="content" class="main-margin-top">
+
+    <div class="container">
+
+        <div class="row mt-5 mb-5">
+            <div class="h3 p-3 text-success" >
+                <p th:text="${success}"></p>
+            </div>
+            <!--<div class="h3 p-3 text-warning" >
+                <p th:text="${failed}"></p>
+            </div>-->
+
+            <div class="card">
+
+                <div class="text-center font-weight-normal">
+                    <table class="table table-hover table-striped">
+                        <tr>
+                            <th>
+                                BOOKING SUMMARY
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>FIRST NAME</td>
+                            <td th:text="${passenger.getFirstName()}"></td>
+                        </tr>
+                        <tr>
+                            <td>LAST NAME</td>
+                            <td th:text="${passenger.getLastName()}"></td>
+                        </tr>
+                        <tr>
+                            <td>BOOKING NUMBER</td>
+                            <td th:text="${booking.getBookingNumber()}"></td>
+                        </tr>
+                        <tr>
+                            <td>TRIP NUMBER</td>
+                            <td th:text="${trip.getTripNumber()}"></td>
+                        </tr>
+                        <tr>
+                            <td>TAKE OFF TIME</td>
+                            <td th:text="${trip.getTakeOffTime()}"></td>
+                        </tr>
+                        <tr>
+                            <td>TAKE OFF POINT</td>
+                            <td th:text="${trip.getTakeOffPoint()}"></td>
+                        </tr>
+                        <tr>
+                            <td>DESTINATION</td>
+                            <td th:text="${trip.getDestinationPoint()}"></td>
+                        </tr>
+                        <tr>
+                            <td>BOOKING NUMBER</td>
+                            <td th:text="${booking.getBookingNumber()}"></td>
+                        </tr>
+                    </table>
+                    <div><a th:href="@{/}">Go Back to Home Page</a></div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</main>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+
+</body>
+
+</html>
+
+

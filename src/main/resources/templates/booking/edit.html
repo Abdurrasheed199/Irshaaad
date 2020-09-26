@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+
+</head>
+<body>
+<h1>Edit Booking</h1>
+
+
+
+<form action="#" th:object="${booking}" th:action="${'/bookings/update'}"  method="post">
+
+    <input type="hidden"  th:field="*{id}" name="id">
+
+    <div class="form-group">
+        <label>Booking Number:</label>
+        <input type="text" class="form-control" placeholder="bookingNumber" name="bookingNumber" th:field="*{bookingNumber}" readonly/>
+    </div>
+
+    <div class="form-group">
+        <label>Trip:</label>
+        <input type="hidden" class="form-control" placeholder="trip " name="trip" th:field="*{trip}"/>
+    </div>
+
+    <div class="form-group">
+        <label>Passenger:</label>
+        <input type="text" placeholder="passenger" class="form-control" name="passenger" th:field="*{passenger}"/>
+    </div>
+    <label>Ticket:</label>
+    <input type="text" class="form-control" placeholder="ticket" name="ticket" th:field="*{ticket}" readonly/>
+    </div>
+
+
+    <div class="form-group">
+        <label>Booking Date:</label>
+        <input type="datetime-local" class="form-control" placeholder="bookingDate" name="bookingDate" th:field="*{bookingDate}"/>
+    </div>
+
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Edit Booking</button>
+</form>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>

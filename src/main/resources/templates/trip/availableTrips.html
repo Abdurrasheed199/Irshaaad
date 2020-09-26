@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Welcome to Irshaaad Transport-List of Available Trip</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+
+
+</head>
+<body>
+
+<main layout:fragment="content" class="main-margin-top">
+
+    <div class="container">
+
+        <div class="col-12 row mt-5 mb-5">
+
+            <form  th:action="${'/trips/availableTrips'}" th:object="${available_trips}"  method="get">
+                <div class="p-1 col-12 row mb-3" style="border-width: 1px; border-style: solid; color: #0b2e13">
+                    <div class="mr-3 col-2 m-1">
+                        <!--                        <label>From:</label>-->
+                        <input type="text" placeholder="From where" name="takeOffTime">
+                    </div>
+                    <div class="mr-3 ml-5 col-2 m-1">
+                        <!--                        <label>To:</label>-->
+                        <input type="text" placeholder="To where" name="destinationPoint">
+                    </div>
+                    <div class="mr-3 ml-5 col-2 m-1">
+                        <!--                        <label for="departure">Departure</label>-->
+                        <input type="date" name="departure" id="departure" required>
+                    </div>
+                    <div class=" ml-4 col-3 pt-1">
+                        <button type="submit" name="submit">Search Trip</button>
+                    </div>
+                </div>
+            </form>
+
+
+            <table class="table bg-white table-hover table-striped" >
+                <caption class="table-head">LIST OF AVAILABLE TRIPS</caption>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        TRIP NUMBER.
+                    </th>
+
+                    <th>
+                        BUS
+                    </th>
+
+                    <th>
+                        TAKE OFF TIME
+                    </th>
+
+                    <th>
+                        LANDING TIME
+                    </th>
+
+                    <th>
+                        TAKE OFF POINT
+                    </th>
+
+                    <th>
+                        DESTINATION POINT
+                    </th>
+
+                    <th>
+                       PRICE
+                    </th>
+
+                    <th>
+                        BOOK TRIP
+                    </th>
+                </tr>
+
+                <tr th:each="row : *{available_trips}">
+                    <td th:text="${row.getId()}"></td>
+                    <td th:text="${row.getTripNumber()}"></td>
+                    <td th:text="${row.getBus().getId()}"></td>
+                    <td th:text="${row.getTakeOffTime()}"></td>
+                    <td th:text="${row.getLandingTime()}"></td>
+                    <td th:text="${row.getTakeOffPoint()}"></td>
+                    <td th:text="${row.getDestinationPoint()}"></td>
+                    <td th:text="${row.getPrice()}"></td>
+                    <td><a th:href="@{/bookings/bookTrip/{id}(id=${row.getId()})}"><button name="button" >Book trip</button></a></td>
+                </tr>
+
+            </table>
+            <p><a th:href="@{/}">Go Back to Home Page</a> </p>
+
+        </div>
+
+    </div>
+
+
+
+</main>
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Welcome to Fly Right Airline-Create Location</title>
+</head>
+<body>
+
+<main layout:fragment="content" class="main-margin-top">
+    <h3>Create Location</h3>
+    <form method="post" th:action="${'/locations/add'}">
+        <div class="form-group">
+            <label>Registration Number:</label>
+            <input type="text" class="form-control" name="code" id="code"/>
+        </div>
+        <div>
+            <input type="submit" name="creatCode" id="creatCode" value="Create Location"/>
+        </div>
+    </form>
+</main>
+</body>
+</html>

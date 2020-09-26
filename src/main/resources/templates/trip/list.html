@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Trip List</h1>
+    <table class="table table-danger">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">TripNumber</th>
+            <th scope="col">Bus</th>
+            <th scope="col">TakeOffTime</th>
+            <th scope="col">LandingTime</th>
+            <th scope="col">TakeOffPoint</th>
+            <th scope="col">DestinationPoint</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row : *{trips}">
+            <td th:text="${row.getId()}"></td>
+            <td th:text="${row.getTripNumber()}"></td>
+            <td th:text="${row.getBus().getId()}"></td>
+            <td th:text="${row.getTakeOffTime()}"></td>
+            <td th:text="${row.getLandingTime()}"></td>
+            <td th:text="${row.getTakeOffPoint()}"></td>
+            <td th:text="${row.getDestinationPoint()}"></td>
+            <td><a th:href="@{/trips/edit/{id}(id=${row.getId()})}"><button class="btn-warning" name="button">Edit</button></a></td>
+            <td><a th:href="@{/trips/delete/{id}(id=${row.getId()})}"><button class="btn-danger" name="button">Delete</button></a></td>
+        </tr>
+
+
+
+
+
+    </table>
+    <!--<h1 th:text="${message}"></h1>-->
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+</body>
+
+</html>

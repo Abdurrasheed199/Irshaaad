@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+</head>
+<body>
+
+<div  class="col-sm-4 justify-content-center m-auto mt-3 border border-danger" >
+    <h1>Edit Bus Form</h1>
+    <form action="#" th:object="${bus}" th:action="${'/buses/update'}"  method="post">
+
+        <input type="hidden"  th:field="*{id}" name="id">
+
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" placeholder="Bus Name" name="name" th:field="*{name}" />
+        </div>
+
+        <div class="form-group">
+            <label>Type:</label>
+            <input type="text" class="form-control" placeholder="Type" name="type" th:field="*{type}"/>
+        </div>
+
+        <div class="form-group">
+            <label>Seat Number:</label>
+            <input type="number" placeholder="SeatNumber" class="form-control" name="seatNumber" th:field="*{seatNumber}"/>
+        </div>
+
+
+        <div class="form-group">
+            <label>Registration Number:</label>
+            <input type="text" class="form-control" placeholder="registration number" name="registrationNumber" th:field="*{registrationNumber}"readonly/>
+        </div>
+        <div class="form-group">
+            <label>Capacity:</label>
+            <input type="number" class="form-control" placeholder="capacity" name="capacity" th:field="*{capacity}"/>
+        </div>
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Edit Bus Form</button>
+    </form>
+</div>
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>

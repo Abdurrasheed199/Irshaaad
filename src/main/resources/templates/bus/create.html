@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Transport</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+
+
+</head>
+
+<body>
+
+<div class="col-sm-4 justify-content-center m-auto mt-3 border border-danger" >
+    <h1>Bus Registration Form </h1>
+    <form method="post" th:action="${'/buses/add'}">
+        <div class="form-group">
+            <div >
+                <label>Name</label>
+                <input class="form-control" type="text" name="name" id="name"/>
+            </div>
+            <div>
+                <label>Type</label>
+                <input class="form-control" type="text" name="type" id="type"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>Seat Number</label>
+                <input class="form-control"  type="number" name="seatNumber" id="seatNumber"/>
+            </div>
+            <div class="form-group">
+                <label>Registration Number</label>
+                <input class="form-control"  type="text" name="registrationNumber" id="registrationNumber"/>
+            </div>
+            <div class="form-group">
+                <label>Capacity</label>
+                <input class="form-control"  type="number" name="capacity" id="capacity"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="form-control btn btn-dark" type="submit" name="saveBus" id="saveBus"/>
+        </div>
+
+    </form>
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Welcome to Ishaaad Transport-Book a Trip</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+
+</head>
+<body>
+
+<main layout:fragment="content" class="main-margin-top">
+    <div>
+        <h1 class="h3 mb-3 font-weight-normal text-center">...WELCOME TO IRSHAAAD TRANSPORT...</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="row mt-5 mb-5">
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="header-title">Book Trip</h3>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form method="post" th:action="${'/bookings/process'}" th:object="${trip}">
+                            <div>
+                                <label for="lastName">Last Name:</label>
+                                <input type="text" class="form-control" name="lastName" placeholder="John" id="lastName" required/>
+                            </div>
+                            <div>
+                                <label for="firstName">First Name:</label>
+                                <input type="text" class="form-control" name="firstName" placeholder="Smith" id="firstName" required/>
+                            </div>
+                            <div>
+                                <label for="email">Email:</label>
+                                <input type="number" class="form-control" name="email" placeholder="example@something.com" id="email" required/>
+                            </div>
+                            <div>
+                                <label for="phone">Phone:</label>
+                                <input type="phone" class="form-control" name="phone" placeholder="eg:+234-803-1121212" id="phone" required/>
+                            </div>
+                            <div>
+                                <label for="address">Address:</label>
+                                <input type="text" class="form-control" name="address" placeholder="1, Smith str, Ikeja, Lagos." id="address" />
+                            </div>
+                            <div>
+                                <label for="age">Age:</label>
+                                <input type="number" class="form-control" name="age" placeholder="age" id="age" required/>
+                            </div>
+
+                            <input type="hidden" name="id" th:field="*{id}"/>
+
+                            <p class="text-center mt-3">*****************************************************</p>
+
+                            <div class="form-group">
+                                <label for="payment">Payment Option</label>
+                                <select name="" id="payment" class="form-control">
+                                    <option value="">-- Select Method--</option>
+                                    <option value="Master Card">Master Card</option>
+                                    <option value="Transfer">Transfer</option>
+                                    <option value="E-Payment">E-Payment</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="master_card">Master Card No.:</label>
+                                <input type="number" id="master_card" name="master_card" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cvv">cvv No.:</label>
+                                <input type="number" id="cvv" name="cvv" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pin">Pin:</label>
+                                <input type="password" id="pin" name="password" class="form-control" size="6">
+                            </div>
+
+                            <input type="submit" value="Proceed to Payment" name="submitDetails"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="text-center trip-summary h3 font-weight-normal">
+                    <table class="table table-hover table-striped">
+                        <tr>
+                            <th>
+                                TRIP SUMMARY
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>TRIP NUMBER</td>
+                            <td th:text="${trip.getTripNumber()}"></td>
+                        </tr>
+                        <tr>
+                            <td>TAKE OFF POINT</td>
+                            <td th:text="${trip.getTakeOffPoint()}"></td>
+                        </tr>
+                        <tr>
+                            <td>DESTINATION</td>
+                            <td th:text="${trip.getDestinationPoint()}"></td>
+                        </tr>
+                        <tr>
+                            <td>TAKE OFF TIME</td>
+                            <td th:text="${trip.getTakeOffTime()}"></td>
+                        </tr>
+                        <tr>
+                            <td>LANDING TIME</td>
+                            <td th:text="${trip.getLandingTime()}"></td>
+                        </tr>
+                        <tr>
+                            <td>PRICE</td>
+                            <td th:text="${trip.getPrice()}"></td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+</main>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+
+
+</body>
+
+</html>
+
