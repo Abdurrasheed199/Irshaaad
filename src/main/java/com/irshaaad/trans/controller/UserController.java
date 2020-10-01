@@ -28,14 +28,16 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
     }
-    @GetMapping("/dashboards/admin")
-    public String dashboard(Model model) {
-        return "dashboard/dashboard";
-    }
 
     @GetMapping("/users/feedback")
     public String contact(Model model) {
         return "user/contact";
+    }
+
+    @GetMapping("/users/list")
+    public String users(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "user/list";
     }
 
 

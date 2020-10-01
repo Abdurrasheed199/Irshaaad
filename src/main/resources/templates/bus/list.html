@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout2}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+    <title>Welcome to Irshaaad Transport</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/modern-business.css}">
 </head>
-<body>
+
+<body layout:fragment="content" class="dashboard-margin-top">
 <div class="container">
     <h1>Bus List</h1>
     <table class ="table table-dark">

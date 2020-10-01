@@ -38,7 +38,7 @@ import java.util.Random;
       return "booking/list";
     }
 
-    @RequestMapping(value = "/Bookings/bookTrip/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/bookings/bookTrip/{id}", method = RequestMethod.GET)
     public String create(@PathVariable("id") int id, Model model) {
 
       model.addAttribute("trip", tripRepository.findById(id).get());
@@ -59,6 +59,7 @@ import java.util.Random;
       Trip trip = tripRepository.findById(id).get();
       int availableSeats = trip.getAvailableSeats();
       Passenger passenger = new Passenger(lastName, firstName, email, phone, address, age);
+      passengerRepository.save(passenger);
 
       long millis = System.currentTimeMillis();
       Date bookingDate = new Date(millis);
