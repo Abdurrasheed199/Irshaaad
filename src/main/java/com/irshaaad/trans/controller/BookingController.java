@@ -31,7 +31,6 @@ import java.util.Random;
     private PassengerRepository passengerRepository;
 
 
-
     @RequestMapping(value = "/bookings/list", method = RequestMethod.GET)
     public String bookings(Model model){
       model.addAttribute("bookings", bookingRepository.findAll());

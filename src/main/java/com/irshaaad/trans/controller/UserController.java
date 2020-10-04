@@ -45,6 +45,7 @@ public class UserController {
     public String create(Model model){
         return "user/register";
     }
+
     @PostMapping(value = "/users/register")
     public String register(Model model, RedirectAttributes redirectAttributes, RegisterUserModel registerUserModel){
         //String regex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8,20}$";
@@ -83,7 +84,8 @@ public class UserController {
     public String showAddRoleForm(@PathVariable("id") long id, Model model) {
 
         model.addAttribute("user", userRepository.findById(id).get());
-        return "user/addrole";
+        model.addAttribute("allRole", roleRepository.findAll());
+        return "user/assignRole";
     }
 
     @RequestMapping(value = "/users/addNewRole", method = RequestMethod.POST)

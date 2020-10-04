@@ -45,7 +45,7 @@ public class BusController {
     }
 
     @RequestMapping(value = "/buses/update", method = RequestMethod.POST)
-    public String updateAircraft(Model model, @RequestParam int id, @RequestParam String name, @RequestParam String type, @RequestParam String seatNumber, @RequestParam String registrationNumber) {
+    public String updateBus(Model model, @RequestParam int id, @RequestParam String name, @RequestParam String type, @RequestParam String seatNumber, @RequestParam String registrationNumber) {
 
         Bus bus= busRepository.findById(id).get();
         bus.setName(name);
