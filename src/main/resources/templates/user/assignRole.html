@@ -105,8 +105,12 @@
     </div>
 
     <div class="p-2 add-role" style="border-width: 1px; border-style: solid; color: #0b2e13">
-        <form method="post" th:action="${'/users/addNewRole'}">
-            <input type="hidden" th:field="${user.getId()}">
+        <form method="post" th:action="${'/users/addNewRole'}" th:object="${user}">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label>User Name</label>
+                <input class="form-control" th:field="${user.getUsername()}" readonly>
+            </div>
             <div class="form-group">
                 <label>Role Name</label>
                 <select class="form-control"  name="name">
