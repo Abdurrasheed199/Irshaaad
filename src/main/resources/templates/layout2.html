@@ -125,7 +125,7 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/trips/list}">All Trips</a>
                         </li>
-                        <div sec:authorize="hasRole()">
+                        <div sec:authorize="hasRole('ADMIN')">
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/bookings/list}">All Bookings</a>
                         </li>
