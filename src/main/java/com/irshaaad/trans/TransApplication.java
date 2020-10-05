@@ -17,9 +17,6 @@ public class TransApplication implements CommandLineRunner {
 
 
     public void run(String... args) throws Exception {
-        /*if(aircraftRepository.findAircraftByRegistrationNumber("AB1234")==null){
-            Aircraft aircraft = new Aircraft( "xyz", "AB1234", "bOEING", 58);
-            aircraftRepository.save(aircraft);
-        }*/
+
     }
 }
