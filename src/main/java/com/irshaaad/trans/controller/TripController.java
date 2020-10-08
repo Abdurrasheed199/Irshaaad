@@ -36,6 +36,13 @@ public class TripController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date departDate = formatter.parse(departure);
         model.addAttribute("available_trips", tripRepository.searchAvailableTrips(takeOffPoint, destinationPoint, departDate));
+
+        int count=  tripRepository.numberOfAvailableTrips(takeOffPoint, destinationPoint, departDate);
+        if (count == 0) {
+            model.addAttribute("noTrip","This trip is not available");
+        } else {
+            model.addAttribute("count",count);
+        }
         return "trip/availableTrips";
     }
 

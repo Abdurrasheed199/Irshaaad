@@ -16,5 +16,13 @@ public class IndexController {
         return "/layout";
     }
 
+    @GetMapping("/about")
+    public  String about(Model model){
+        return "/about";
+    }
+
+
+
+
 
 }

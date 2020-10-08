@@ -14,34 +14,34 @@
 <body>
 
 <main layout:fragment="content" class="main-margin-top">
-
+           <h3 class="text-center mt-5">LIST OF AVAILABLE TRIPS</h3>
     <div class="container">
 
-        <div class="col-12 row mt-5 mb-5">
+        <div class="col-12 mt-5 mb-5">
 
-            <form  th:action="${'/trips/availableTrips'}" th:object="${available_trips}"  method="get">
-                <div class="p-1 col-12 row mb-3" style="border-width: 1px; border-style: solid; color: #0b2e13">
+       <!--     <form  th:action="${'/trips/availableTrips'}" th:object="${available_trips}"  method="get">-->
+                <!--<div class="p-1 col-12 row mb-3" style="border-width: 1px; border-style: solid; color: #0b2e13">
                     <div class="mr-3 col-2 m-1">
-                        <!--                        <label>From:</label>-->
+                        &lt;!&ndash;                        <label>From:</label>&ndash;&gt;
                         <input type="text" placeholder="From where" name="takeOffTime">
                     </div>
                     <div class="mr-3 ml-5 col-2 m-1">
-                        <!--                        <label>To:</label>-->
+                        &lt;!&ndash;                        <label>To:</label>&ndash;&gt;
                         <input type="text" placeholder="To where" name="destinationPoint">
                     </div>
                     <div class="mr-3 ml-5 col-2 m-1">
-                        <!--                        <label for="departure">Departure</label>-->
+                        &lt;!&ndash;                        <label for="departure">Departure</label>&ndash;&gt;
                         <input type="date" name="departure" id="departure" required>
                     </div>
                     <div class=" ml-4 col-3 pt-1">
                         <button type="submit" name="submit">Search Trip</button>
                     </div>
                 </div>
-            </form>
+            </form>-->
 
 
             <table class="table bg-white table-hover table-striped" >
-                <caption class="table-head">LIST OF AVAILABLE TRIPS</caption>
+
                 <tr>
                     <th>
                         ID
@@ -93,7 +93,13 @@
                 </tr>
 
             </table>
+            <div >
+            <p th:text="${noTrip}"></p>
+            </div>
+
+        <div>
             <p><a th:href="@{/}">Go Back to Home Page</a> </p>
+        </div>
 
         </div>
 
