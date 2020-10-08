@@ -15,10 +15,15 @@ public class IndexController {
     public  String layout(Model model){
         return "/layout";
     }
-
+/*
     @GetMapping("/about")
     public  String about(Model model){
-        return "/about";
+        return "about us";
+    }*/
+
+    @GetMapping("/about us")
+    public  String us(Model model){
+        return "/about us";
     }
 
 
