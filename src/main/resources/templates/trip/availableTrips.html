@@ -93,8 +93,13 @@
                 </tr>
 
             </table>
-            <div >
+            <div th:if="${noTrip}">
             <p th:text="${noTrip}"></p>
+            </div>
+
+            <div th:if="${count}">
+                <p>There are/is  <span th:text="${count}"></span> trip available</p>
+
             </div>
 
         <div>
