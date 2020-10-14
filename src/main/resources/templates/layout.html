@@ -101,7 +101,10 @@
 <!-- Footer -->
 <footer class="py-1 bg-dark fixed-bottom">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Irshaaad Transport</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Irshaaad Transport
+            <a th:href="@{http://www.facebook.com}" target="_blank"><i class="ml-5 mr-2 fab fa-facebook-f"></i></a>
+            <a th:href="@{http://www.twitter.com}" target="_blank"><i class="ml-5 mr-2 fab fa-twitter"></i></a>
+        </p>
     </div>
     <!-- /.container -->
 </footer>
@@ -110,17 +113,21 @@
 <script th:src="@{/js/bootstrap.js}"></script>-->
 <script th:src="@{/jquery/jquery.min.js}"></script>
 <script th:src="@{/js/bootstrap.js}"></script>
+<script th:src="@{/js/sweetalert2.all.min.js}"></script>
+<script th:src="@{/js/newJs.js}"></script>
 <script>
     $('.carousel').carousel({
         interval:5000
     })
 </script>
 
+<section layout:fragment="scripts">
+
+</section>
 
 
 
-<!-- Optional Section -->
-<th:block layout:fragment="optional" />
+
 
 </body>
 </html>

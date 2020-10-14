@@ -1,15 +1,17 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout2}">
+
 <head>
-    <meta charset="UTF-8">
+
+
     <title>Title</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+
+
 </head>
-<body>
-<div class="container">
+<body layout:fragment="content" class="main-margin-top">
     <h1>Trip List</h1>
     <table class="table table-danger">
         <thead>

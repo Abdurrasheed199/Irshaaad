@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+
+
+    <title>Title</title>
+
+
+</head>
+<body layout:fragment="content" class="main-margin-top">
+
+<div  class="col-sm-4 justify-content-center m-auto mt-3 border border-danger" >
+    <h1>Edit User Form</h1>
+    <form action="#" th:object="${user}" th:action="${'/users/update'}"  method="post">
+
+        <input type="hidden"  th:field="*{id}" name="id">
+
+
+    <div class="form-group">
+        <label>USER NAME</label>
+        <select class="form-control"  name="name">
+            <input type="text" class="form-control" placeholder="userName" name="role" th:field="*{username}"/>
+        </select>
+    </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Edit User</button>
+    </form>
+</div>
+</body>
+</html>

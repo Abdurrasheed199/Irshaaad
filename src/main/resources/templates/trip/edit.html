@@ -1,15 +1,16 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
-</head>
-<body>
 
+
+    <title>Title</title>
+
+
+</head>
+<body layout:fragment="content" class="main-margin-top">
 <div class="col-sm-5 justify-content-center m-auto border border-bottom">
     <form action="#" th:object="${trip}" th:action="${'/trips/update'}"  method="post">
 

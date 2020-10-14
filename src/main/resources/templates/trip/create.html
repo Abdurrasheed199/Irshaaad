@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Create Trip</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+
+
+    <title>Title</title>
 
 
 </head>
-<body>
-<div class="col-sm-4 justify-content-center m-auto mt-lg-5 border border-success pb-2" >
+<body layout:fragment="content" class="main-margin-top"><div class="col-sm-4 justify-content-center m-auto mt-lg-5 border border-success pb-2" >
     <form method="post" th:object="${bus}" th:action="${'/trips/add'}" >
         <input type="hidden" name="id" th:field="*{id}">
         <strong>Create Trip</strong>

@@ -30,7 +30,6 @@ import java.util.Random;
     @Autowired
     private PassengerRepository passengerRepository;
 
-
     @RequestMapping(value = "/bookings/list", method = RequestMethod.GET)
     public String bookings(Model model){
       model.addAttribute("bookings", bookingRepository.findAll());
@@ -110,6 +109,7 @@ import java.util.Random;
       bookingRepository.delete(booking);
       return "redirect:/bookings/list";
     }
+
   }
 
 

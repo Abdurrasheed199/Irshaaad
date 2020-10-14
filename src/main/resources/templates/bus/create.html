@@ -1,18 +1,16 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Create Transport</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+
+
+    <title>Title</title>
 
 
 </head>
-
-<body>
-
+<body layout:fragment="content" class="main-margin-top">
 <div class="col-sm-4 justify-content-center m-auto mt-3 border border-danger" >
     <h1>Bus Registration Form </h1>
     <form method="post" th:action="${'/buses/add'}">

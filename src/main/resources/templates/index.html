@@ -2,8 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
-<head>
 
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/myCss.css}">
 
     <title>Title</title>
 
@@ -107,12 +108,12 @@
 <main layout:fragment="content" class="main-margin-top">
 -->
     <div>
-        <h1 class="h3 mb-1 font-weight-normal text-center"><em>WELCOME TO IRSHAAAD TRANSPORT</em></h1>
+        <h1 class="h3 mb-1 font-weight-normal text-center first"><em><marquee>WELCOME TO IRSHAAAD TRANSPORT</marquee></em></h1>
     </div>
 
     <div class="container">
 
-        <div class="row mt-1 mb-5">
+        <div class="row mt-1 mb-2">
 
             <div class="col-md-3">
                 <div class="card">
@@ -224,8 +225,11 @@
                 </div>
             </div>
         </div>
-
     </div>
+<div>
+    <h1 class="text-center mb-2">hello</h1>
+</div>
+
 
     <div class="container-fluid bg-light p-5">
 
@@ -269,7 +273,15 @@
 
         </div>
 
+        <h1>Contact Us</h1>
+
+            <a href="#" style="color:rgb(38, 36, 44)">
+                <span style="color:rgb(90, 144, 231)" class="fas fa-phone"></span>&nbsp; Phone (+234) 8141694722</a>
+
+
     </div>
+
+
 
 <!--
 </main>&lt;!&ndash; Footer &ndash;&gt;

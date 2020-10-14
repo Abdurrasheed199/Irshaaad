@@ -1,5 +1,7 @@
 package com.irshaaad.trans.controller;
 
+import com.irshaaad.trans.model.Bus;
+import com.irshaaad.trans.model.Passenger;
 import com.irshaaad.trans.model.Role;
 import com.irshaaad.trans.model.User;
 import com.irshaaad.trans.model.viewmodels.RegisterUserModel;
@@ -23,6 +25,7 @@ public class UserController {
     final UserRepository userRepository;
     final
     RoleRepository roleRepository;
+
     public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -42,44 +45,45 @@ public class UserController {
 
 
     @GetMapping("/users/create")
-    public String create(Model model){
+    public String create(Model model) {
         return "user/register";
     }
 
     @PostMapping(value = "/users/register")
-    public String register(Model model, RedirectAttributes redirectAttributes, RegisterUserModel registerUserModel){
+    public String register(Model model, RedirectAttributes redirectAttributes, RegisterUserModel registerUserModel) {
         //String regex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8,20}$";
         //Pattern p = Pattern.compile(regex);
         // Matcher m = p.matcher(registerUserModel.getPassword());
-        if(!registerUserModel.getPassword().equals(registerUserModel.getConfirmPassword())){
-            redirectAttributes.addAttribute("error","Password does not match ");
-        } else if( userRepository.existsByUsername(registerUserModel.getUserName())){
-            redirectAttributes.addAttribute("error","User with same id already exist ");
-        }
-        else if( registerUserModel.getPassword().isBlank()||registerUserModel.getPassword().isEmpty()){
-            redirectAttributes.addAttribute("error","Password can not be empty or blank ");
+        if (!registerUserModel.getPassword().equals(registerUserModel.getConfirmPassword())) {
+            redirectAttributes.addAttribute("error", "Password does not match ");
+        } else if (userRepository.existsByUsername(registerUserModel.getUserName())) {
+            redirectAttributes.addAttribute("error", "User with same id already exist ");
+        } else if (registerUserModel.getPassword().isBlank() || registerUserModel.getPassword().isEmpty()) {
+            redirectAttributes.addAttribute("error", "Password can not be empty or blank ");
         }
 
         //       else if( !m.matches()){
 //            redirectAttributes.addAttribute("error","Password is not strong enough");
 //        }
-        else{
+        else {
             User u = new User();
             u.setUsername(registerUserModel.getUserName());
             u.setPassword(passwordEncoder.encode(registerUserModel.getPassword()));
-            Optional<Role> optionalRole= roleRepository.findByName("USER");
-            if(optionalRole.isPresent()) {
-                Role role =optionalRole.get();
+            Optional<Role> optionalRole = roleRepository.findByName("USER");
+            if (optionalRole.isPresent()) {
+                Role role = optionalRole.get();
                 List<Role> roleList = new ArrayList<>();
                 roleList.add(role);
                 u.setRoles(roleList);
             }
             userRepository.save(u);
+            redirectAttributes.addAttribute("success", "You have successfully registered");
             //redirectAttributes.addAttribute("error","");
-            return "redirect:/login";
+            return "redirect:/users/create";
         }
         return "redirect:/users/create";
     }
+
     @RequestMapping(value = "/users/userRole/{id}", method = RequestMethod.GET)
     public String showAddRoleForm(@PathVariable("id") long id, Model model) {
 
@@ -91,7 +95,7 @@ public class UserController {
     @RequestMapping(value = "/users/addNewRole", method = RequestMethod.POST)
     public String updateRole(Model model, @RequestParam long id, @RequestParam String name) {
 
-        User u= userRepository.findById(id).get();
+        User u = userRepository.findById(id).get();
         //Optional<Role> optionalRole= roleRepository.findByName(name);
         Role role = roleRepository.findByName(name).get();
 
@@ -99,6 +103,36 @@ public class UserController {
         roleList.add(role);
         u.setRoles(roleList);
 
+
+        userRepository.save(u);
+
+        return "redirect:/users/list";
+    }
+
+
+    @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
+    public String remove(@PathVariable("id") long id, Model model) {
+
+        User u = userRepository.findById(id).get();
+
+        userRepository.delete(u);
+        return "redirect:/users/list";
+    }
+
+    @RequestMapping(value = "/users/edit/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        //Bus bus = busRepository.findById(id);
+
+        model.addAttribute("user", userRepository.findById(id).get());
+        return "/user/edit";
+    }
+
+
+    @RequestMapping(value = "/users/update", method = RequestMethod.POST)
+    public String updateUser(Model model, @RequestParam long id, @RequestParam String username) {
+
+        User u = userRepository.findById(id).get();
+        u.setUsername(username);
 
         userRepository.save(u);
 
