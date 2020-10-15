@@ -26,6 +26,11 @@ public class IndexController {
         return "/about us";
     }
 
+    @GetMapping("/contact us")
+    public  String contact(Model model){
+        return "/contact us";
+    }
+
 
 
 
