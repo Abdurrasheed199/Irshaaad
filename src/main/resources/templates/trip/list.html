@@ -6,17 +6,15 @@
 
 <head>
 
-
     <title>Title</title>
-
 
 </head>
 <body layout:fragment="content" class="main-margin-top">
     <h1>Trip List</h1>
-    <table class="table table-danger">
+    <table class="table table-danger" id="tripTable">
         <thead>
         <tr>
-            <th scope="col">Id</th>
+            <th scope="col">S/N</th>
             <th scope="col">TripNumber</th>
             <th scope="col">Bus</th>
             <th scope="col">TakeOffTime</th>
@@ -47,10 +45,23 @@
     </table>
     <!--<h1 th:text="${message}"></h1>-->
 </div>
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/bootstrap.bundle.min.js"></script>
-<script th:src="@{/jquery/jquery.min.js}"></script>
-<script th:src="@{/js/bootstrap.js}"></script>
+    <th:block layout:fragment="optional" />
+        <script>
+            const table = document.getElementById("tripTable")
+            function serialNo() {
+
+                let s_No = 1;
+                for (let line=1; line < table.rows.length; line++)
+                {
+                    table.rows[line].cells[0].innerHTML = s_No.toString();
+                    s_No++;
+                }
+
+            }
+            serialNo();
+
+        </script>
 </body>
+
 
 </html>

@@ -17,7 +17,7 @@
            <h3 class="text-center mt-5">LIST OF AVAILABLE TRIPS</h3>
     <div class="container">
 
-        <div class="col-12 mt-5 mb-5">
+        <div>
 
        <!--     <form  th:action="${'/trips/availableTrips'}" th:object="${available_trips}"  method="get">-->
                 <!--<div class="p-1 col-12 row mb-3" style="border-width: 1px; border-style: solid; color: #0b2e13">
@@ -40,11 +40,11 @@
             </form>-->
 
 
-            <table class="table bg-white table-hover table-striped" >
-
+            <table class="table bg-white table-hover table-striped" id="tripAvailable" >
+                 <thead class="thead-dark">
                 <tr>
                     <th>
-                        ID
+                        S/N
                     </th>
 
                     <th>
@@ -79,16 +79,16 @@
                         BOOK TRIP
                     </th>
                 </tr>
-
+                </thead>
                 <tr th:each="row : *{available_trips}">
-                    <td th:text="${row.getId()}"></td>
+                    <td></td>
                     <td th:text="${row.getTripNumber()}"></td>
-                    <td th:text="${row.getBus().getId()}"></td>
+                    <td th:text="${row.getBus().getName()}"></td>
                     <td th:text="${row.getTakeOffTime()}"></td>
                     <td th:text="${row.getLandingTime()}"></td>
                     <td th:text="${row.getTakeOffPoint()}"></td>
                     <td th:text="${row.getDestinationPoint()}"></td>
-                    <td th:text="${row.getPrice()}"></td>
+                    <td th:text="'&#8358'+${row.getPrice()}+'0'"></td>
                     <td><a th:href="@{/bookings/bookTrip/{id}(id=${row.getId()})}"><button name="button" >Book trip</button></a></td>
                 </tr>
 
@@ -114,11 +114,23 @@
 
 </main>
 
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/bootstrap.bundle.min.js"></script>
-<script th:src="@{/jquery/jquery.min.js}"></script>
-<script th:src="@{/js/bootstrap.js}"></script>
+<section layout:fragment="scripts">
+<script>
+    const table = document.getElementById("tripAvailable")
+    function serialNo() {
 
+        let s_No = 1;
+        for (let line=1; line < table.rows.length; line++)
+        {
+            table.rows[line].cells[0].innerHTML = s_No.toString();
+            s_No++;
+        }
+
+    }
+    serialNo();
+
+</script>
+</section>
 </body>
 
 </html>

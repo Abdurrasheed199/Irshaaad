@@ -1,8 +1,10 @@
 package com.irshaaad.trans.controller;
 
 
+import com.irshaaad.trans.model.Booking;
 import com.irshaaad.trans.model.Bus;
 import com.irshaaad.trans.model.Trip;
+import com.irshaaad.trans.repository.BookingRepository;
 import com.irshaaad.trans.repository.BusRepository;
 import com.irshaaad.trans.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 @Controller
 public class TripController {
 
     @Autowired
     private TripRepository tripRepository;
+
     @Autowired
     private BusRepository busRepository;
 
@@ -46,6 +50,7 @@ public class TripController {
         return "trip/availableTrips";
     }
 
+
     @RequestMapping(value = "/trips/create/{id}", method = RequestMethod.GET)
     public String create(@PathVariable("id") int id, Model model) {
 
@@ -53,8 +58,17 @@ public class TripController {
         return "trip/create";
     }
 
+    public String generateUniqueId() {
+        Random rand = new Random(); //instance of random class
+        //generate random values from 0-100000
+        int num = rand.nextInt(100000);
+        String uniqueId = ("00" + Integer.toString(num));
+        return uniqueId;
+    }
+
+
     @RequestMapping(value = "/trips/add", method = RequestMethod.POST)
-    public String add(Model model, @RequestParam int id, @RequestParam String tripNumber, @RequestParam String takeOffTime, @RequestParam String landingTime, @RequestParam String takeOffPoint, @RequestParam String destinationPoint, @RequestParam double price) throws ParseException {
+    public String add(Model model, @RequestParam int id /*@RequestParam String tripNumber*/, @RequestParam String takeOffTime, @RequestParam String landingTime, @RequestParam String takeOffPoint, @RequestParam String destinationPoint, @RequestParam double price) throws ParseException {
 
         Bus bus = busRepository.findById(id).get();
         int availableSeats = bus.getCapacity();
@@ -63,6 +77,13 @@ public class TripController {
         Date utilDate = formatter.parse(takeOffTime);
 
         Date utilDate2 = formatter.parse(landingTime);
+
+        Trip t = null; String tripNumber = " ";
+        do{
+            tripNumber =generateUniqueId();
+            t = tripRepository.findTripByTripNumber(tripNumber);
+        }while (t != null);
+
 
         Trip trip = new Trip(tripNumber, bus, utilDate, utilDate2, takeOffPoint, destinationPoint, price, availableSeats);
         tripRepository.save(trip);

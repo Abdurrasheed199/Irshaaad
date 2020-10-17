@@ -77,7 +77,7 @@ import java.util.Random;
       model.addAttribute("trip", trip);
       model.addAttribute("booking", booking);
       model.addAttribute("passenger", passenger);
-      model.addAttribute("success", "Thank you for travling with us, bellow is the details of your booking. A copy of this has been sent to your email...");
+      model.addAttribute("success", "SAFE TRIP.");
 
       return "booking/success";
     }

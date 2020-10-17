@@ -18,24 +18,25 @@
 
     <div class="container">
 
-        <div class="row mt-5 mb-5">
+        <div class="row mt-5 mb-5 ml-lg-2">
 
-            <div class="col-md-6">
+            <div class="col-sm-6 bg-danger">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-light">
                         <h3 class="header-title">Book Trip</h3>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body bg-success">
 
                         <form method="post" th:action="${'/bookings/process'}" th:object="${trip}">
+                            <input type="hidden" name="id" th:field="*{id}"/>
                             <div>
                                 <label for="lastName">Last Name:</label>
-                                <input type="text" class="form-control" name="lastName" placeholder="John" id="lastName" required/>
+                                <input type="text" class="form-control" name="lastName" placeholder="Surname" id="lastName" required/>
                             </div>
                             <div>
                                 <label for="firstName">First Name:</label>
-                                <input type="text" class="form-control" name="firstName" placeholder="Smith" id="firstName" required/>
+                                <input type="text" class="form-control" name="firstName" placeholder="Fisrtname" id="firstName" required/>
                             </div>
                             <div>
                                 <label for="email">Email:</label>
@@ -53,15 +54,19 @@
                                 <label for="age">Age:</label>
                                 <input type="number" class="form-control" name="age" placeholder="age" id="age" required/>
                             </div>
+                            <input type="submit" value="submit" name="submitDetails"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-                            <input type="hidden" name="id" th:field="*{id}"/>
 
-                            <p class="text-center mt-3">*****************************************************</p>
+                            <!--<p class="text-center mt-3">*****************************************************</p>
 
                             <div class="form-group">
                                 <label for="payment">Payment Option</label>
                                 <select name="" id="payment" class="form-control">
-                                    <option value="">-- Select Method--</option>
+                                    <option value="">&#45;&#45; Select Method&#45;&#45;</option>
                                     <option value="Master Card">Master Card</option>
                                     <option value="Transfer">Transfer</option>
                                     <option value="E-Payment">E-Payment</option>
@@ -88,11 +93,13 @@
                     </div>
                 </div>
             </div>
+-->
 
-            <div class="col-md-6">
+
+            <div class="col-sm-6">
 
                 <div class="text-center trip-summary h3 font-weight-normal">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-dark">
                         <tr>
                             <th>
                                 TRIP SUMMARY
@@ -125,13 +132,8 @@
 
                     </table>
                 </div>
-
             </div>
-
-
-
         </div>
-
     </div>
 
 
