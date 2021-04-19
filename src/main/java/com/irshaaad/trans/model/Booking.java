@@ -16,7 +16,7 @@ public class Booking {
     private Trip trip;
     @ManyToOne
     private Passenger passenger;
-
+    private String status;
     private Date bookingDate;
 
 
@@ -63,6 +63,13 @@ public class Booking {
         this.passenger = passenger;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Date getBookingDate() {
         return bookingDate;

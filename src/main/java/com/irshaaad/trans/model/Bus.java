@@ -12,7 +12,6 @@ public class Bus {
     private int id;
     private String name;
     private String type;
-    private String seatNumber;
     private String registrationNumber;
     int capacity;
 
@@ -20,10 +19,9 @@ public class Bus {
 
     }
 
-    public Bus(String name, String type, String seatNumber, String registrationNumber, int capacity) {
+    public Bus(String name, String type, String registrationNumber, int capacity) {
         this.name = name;
         this.type = type;
-        this.seatNumber = seatNumber;
         this.registrationNumber= registrationNumber;
         this.capacity= capacity;
     }
@@ -50,14 +48,6 @@ public class Bus {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
     }
 
     public String getRegistrationNumber() {

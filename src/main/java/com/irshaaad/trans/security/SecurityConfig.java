@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // .antMatchers("/buses/list").hasRole("ADMIN")
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/css/**").permitAll()
+                .antMatchers("/testing").permitAll()
                 .antMatchers("/resources/static/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/").permitAll()

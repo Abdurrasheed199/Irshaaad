@@ -11,6 +11,13 @@ public class User {
     private long id;
     private String username;
     private String password;
+    private String lastName;
+    private String firstName;
+    private String email;
+    private String phone;
+    private String address;
+    private String jobTittle;
+    private  int age;
     private boolean disabled;
     private boolean accountExpired;
     private boolean accountLocked;
@@ -25,9 +32,16 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, boolean disabled, boolean accountExpired, boolean accountLocked, boolean credentialsExpired, List<Role> roles) {
+    public User(String username, String password, String lastName, String firstName, String email, String phone, String address, String jobTittle, int age, boolean disabled, boolean accountExpired, boolean accountLocked, boolean credentialsExpired, List<Role> roles) {
         this.username = username;
         this.password = password;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.jobTittle = jobTittle;
+        this.age = age;
         this.disabled = disabled;
         this.accountExpired = accountExpired;
         this.accountLocked = accountLocked;
@@ -35,8 +49,7 @@ public class User {
         this.roles = roles;
     }
 
-    public long getId()
-    {
+    public long getId() {
         return id;
     }
 
@@ -58,6 +71,62 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getJobTittle() {
+        return jobTittle;
+    }
+
+    public void setJobTittle(String jobTittle) {
+        this.jobTittle = jobTittle;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public boolean isDisabled() {
@@ -99,4 +168,6 @@ public class User {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
+
 }

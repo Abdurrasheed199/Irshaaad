@@ -32,17 +32,22 @@ public class UserController {
         this.roleRepository = roleRepository;
     }
 
-    @GetMapping("/users/feedback")
+   /* @GetMapping("/users/feedback")
     public String contact(Model model) {
         return "user/contact";
     }
-
-    @GetMapping("/users/list")
+*/
+   /* @GetMapping("/passengers/list")
     public String users(Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("passengers", userRepository.findUsersByJobTittle("Passenger"));
+        return "passenger/list";
+    }
+*/
+    @GetMapping("/staffs/list")
+    public String staffs(Model model) {
+        model.addAttribute("staffs", userRepository.findUsersByJobTittleNot("Passenger"));
         return "user/list";
     }
-
 
     @GetMapping("/users/create")
     public String create(Model model) {
@@ -69,13 +74,20 @@ public class UserController {
             User u = new User();
             u.setUsername(registerUserModel.getUserName());
             u.setPassword(passwordEncoder.encode(registerUserModel.getPassword()));
-            Optional<Role> optionalRole = roleRepository.findByName("USER");
+            Optional<Role> optionalRole = roleRepository.findByName("PASSENGER");
             if (optionalRole.isPresent()) {
                 Role role = optionalRole.get();
                 List<Role> roleList = new ArrayList<>();
                 roleList.add(role);
                 u.setRoles(roleList);
             }
+            u.setJobTittle("Passenger");
+            u.setFirstName(registerUserModel.getFirstName());
+            u.setLastName(registerUserModel.getLastName());
+            u.setAge(registerUserModel.getAge());
+            u.setAddress(registerUserModel.getAddress());
+            u.setPhone(registerUserModel.getPhone());
+            u.setEmail(registerUserModel.getEmail());
             userRepository.save(u);
             redirectAttributes.addAttribute("success", "You have successfully registered");
             //redirectAttributes.addAttribute("error","");
@@ -83,6 +95,54 @@ public class UserController {
         }
         return "redirect:/users/create";
     }
+
+    @GetMapping("/staffs/create")
+    public String createStaff(Model model) {
+        return "staff/register";
+    }
+
+    @PostMapping(value = "/staffs/register")
+    public String registerStaff(Model model, RedirectAttributes redirectAttributes, RegisterUserModel registerUserModel) {
+        //String regex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8,20}$";
+        //Pattern p = Pattern.compile(regex);
+        // Matcher m = p.matcher(registerUserModel.getPassword());
+        if (!registerUserModel.getPassword().equals(registerUserModel.getConfirmPassword())) {
+            redirectAttributes.addAttribute("error", "Password does not match ");
+        } else if (userRepository.existsByUsername(registerUserModel.getUserName())) {
+            redirectAttributes.addAttribute("error", "User with same id already exist ");
+        } else if (registerUserModel.getPassword().isBlank() || registerUserModel.getPassword().isEmpty()) {
+            redirectAttributes.addAttribute("error", "Password can not be empty or blank ");
+        }
+
+        //       else if( !m.matches()){
+//            redirectAttributes.addAttribute("error","Password is not strong enough");
+//        }
+        else {
+            User u = new User();
+            u.setUsername(registerUserModel.getUserName());
+            u.setPassword(passwordEncoder.encode(registerUserModel.getPassword()));
+            Optional<Role> optionalRole = roleRepository.findByName("STAFF");
+            if (optionalRole.isPresent()) {
+                Role role = optionalRole.get();
+                List<Role> roleList = new ArrayList<>();
+                roleList.add(role);
+                u.setRoles(roleList);
+            }
+            u.setJobTittle(registerUserModel.getJobTittle());
+            u.setFirstName(registerUserModel.getFirstName());
+            u.setLastName(registerUserModel.getLastName());
+            u.setAge(registerUserModel.getAge());
+            u.setAddress(registerUserModel.getAddress());
+            u.setPhone(registerUserModel.getPhone());
+            u.setEmail(registerUserModel.getEmail());
+            userRepository.save(u);
+            redirectAttributes.addAttribute("success", "You have successfully registered");
+            //redirectAttributes.addAttribute("error","");
+            return "redirect:/staffs/create";
+        }
+        return "redirect:/staffs/create";
+    }
+
 
     @RequestMapping(value = "/users/userRole/{id}", method = RequestMethod.GET)
     public String showAddRoleForm(@PathVariable("id") long id, Model model) {
@@ -138,5 +198,7 @@ public class UserController {
 
         return "redirect:/users/list";
     }
+
+
 }
 

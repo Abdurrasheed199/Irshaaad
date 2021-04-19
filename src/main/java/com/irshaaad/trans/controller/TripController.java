@@ -10,14 +10,12 @@ import com.irshaaad.trans.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -34,6 +32,14 @@ public class TripController {
         model.addAttribute("trips", tripRepository.findAll());
         return "trip/list";
     }
+   /* @CrossOrigin(exposedHeaders = "http://localhost:8895")
+    @RequestMapping(value = "/testing", method = RequestMethod.GET)
+    public List testing(Model model) {
+
+        return (List) tripRepository.findAll();
+    }*/
+
+
 
     @RequestMapping(value = "/trips/availableTrips", method = RequestMethod.GET)
     public String availableTrips(Model model, @RequestParam String takeOffPoint, @RequestParam String destinationPoint, @RequestParam String departure) throws ParseException {
@@ -41,7 +47,7 @@ public class TripController {
         Date departDate = formatter.parse(departure);
         model.addAttribute("available_trips", tripRepository.searchAvailableTrips(takeOffPoint, destinationPoint, departDate));
 
-        int count=  tripRepository.numberOfAvailableTrips(takeOffPoint, destinationPoint, departDate);
+        int count = tripRepository.numberOfAvailableTrips(takeOffPoint, destinationPoint, departDate);
         if (count == 0) {
             model.addAttribute("noTrip","This trip is not available");
         } else {
@@ -58,6 +64,14 @@ public class TripController {
         return "trip/create";
     }
 
+
+   /* @RequestMapping(value = "/testing/create", method = RequestMethod.GET)
+    public List create(Model model) {
+
+        return (List) tripRepository.findAll();
+    }*/
+
+
     public String generateUniqueId() {
         Random rand = new Random(); //instance of random class
         //generate random values from 0-100000
@@ -66,21 +80,21 @@ public class TripController {
         return uniqueId;
     }
 
-
+   /* @CrossOrigin(exposedHeaders = "http://localhost:8895")*/
     @RequestMapping(value = "/trips/add", method = RequestMethod.POST)
     public String add(Model model, @RequestParam int id /*@RequestParam String tripNumber*/, @RequestParam String takeOffTime, @RequestParam String landingTime, @RequestParam String takeOffPoint, @RequestParam String destinationPoint, @RequestParam double price) throws ParseException {
 
         Bus bus = busRepository.findById(id).get();
         int availableSeats = bus.getCapacity();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-        //System.out.println(takeOffTime);
+
         Date utilDate = formatter.parse(takeOffTime);
 
         Date utilDate2 = formatter.parse(landingTime);
 
         Trip t = null; String tripNumber = " ";
         do{
-            tripNumber =generateUniqueId();
+            tripNumber = generateUniqueId();
             t = tripRepository.findTripByTripNumber(tripNumber);
         }while (t != null);
 
@@ -98,7 +112,7 @@ public class TripController {
     }
 
     @RequestMapping(value = "/trips/update", method = RequestMethod.POST)
-    public String updateTrip(Model model, @RequestParam int id, @RequestParam String tripNumber, @RequestParam String takeOffTime, @RequestParam String landingTime, @RequestParam String takeOffPoint, @RequestParam String destinationPoint, @RequestParam double price, @RequestParam int availableSeats) throws ParseException {
+    public String updateTrip(Model model, @RequestParam int id, @RequestParam String tripNumber, @RequestParam String takeOffTime, @RequestParam String landingTime, @RequestParam String takeOffPoint, @RequestParam String destinationPoint, @RequestParam double price, @RequestParam int availableSeats, @RequestParam String details) throws ParseException {
 
         Trip trip= tripRepository.findById(id).get();
 
@@ -128,4 +142,5 @@ public class TripController {
         tripRepository.delete(trip);
         return "redirect:/trips/list";
     }
+
 }

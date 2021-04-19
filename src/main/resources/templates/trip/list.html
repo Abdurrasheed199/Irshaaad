@@ -16,11 +16,12 @@
         <tr>
             <th scope="col">S/N</th>
             <th scope="col">TripNumber</th>
-            <th scope="col">Bus</th>
-            <th scope="col">TakeOffTime</th>
-            <th scope="col">LandingTime</th>
-            <th scope="col">TakeOffPoint</th>
-            <th scope="col">DestinationPoint</th>
+            <th scope="col">Bus Reg. No</th>
+            <th scope="col">Take Off Time</th>
+            <th scope="col">Landing Time</th>
+            <th scope="col">Take Off</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Available Seats</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -29,11 +30,12 @@
         <tr th:each="row : *{trips}">
             <td th:text="${row.getId()}"></td>
             <td th:text="${row.getTripNumber()}"></td>
-            <td th:text="${row.getBus().getId()}"></td>
-            <td th:text="${row.getTakeOffTime()}"></td>
-            <td th:text="${row.getLandingTime()}"></td>
+            <td th:text="${row.getBus().getRegistrationNumber()}"></td>
+            <td th:text="${#dates.format(row.getTakeOffTime(), 'dd-MM-yyy hh:mm a')}"></td>
+            <td th:text="${#dates.format(row.getLandingTime(), 'dd-MM-yyy hh:mm a')}"></td>
             <td th:text="${row.getTakeOffPoint()}"></td>
             <td th:text="${row.getDestinationPoint()}"></td>
+            <td th:text="${row.getAvailableSeats()}"></td>
             <td><a th:href="@{/trips/edit/{id}(id=${row.getId()})}"><button class="btn-warning" name="button">Edit</button></a></td>
             <td><a th:href="@{/trips/delete/{id}(id=${row.getId()})}"><button class="btn-danger" name="button">Delete</button></a></td>
         </tr>

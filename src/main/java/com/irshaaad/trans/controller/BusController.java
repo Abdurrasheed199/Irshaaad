@@ -15,6 +15,7 @@ public class BusController {
 
     @Autowired
     private BusRepository busRepository;
+
     @RequestMapping(value = "/buses/list", method = RequestMethod.GET)
     public String buses(Model model){
         model.addAttribute("buses", busRepository.findAll());
@@ -28,9 +29,9 @@ public class BusController {
     }
 
     @RequestMapping(value = "/buses/add", method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String name,@RequestParam String type, @RequestParam String seatNumber, @RequestParam String registrationNumber, @RequestParam int capacity) {
+    public String add(Model model, @RequestParam String name,@RequestParam String type, @RequestParam String registrationNumber, @RequestParam int capacity) {
 
-        Bus bus = new Bus(name, type, seatNumber, registrationNumber, capacity);
+        Bus bus = new Bus(name, type,registrationNumber, capacity);
         busRepository.save(bus);
         //model.addAttribute("message", "The Bus was created successfully...");
         return "redirect:/buses/list";
@@ -44,13 +45,13 @@ public class BusController {
         return "bus/edit";
     }
 
+
     @RequestMapping(value = "/buses/update", method = RequestMethod.POST)
     public String updateBus(Model model, @RequestParam int id, @RequestParam String name, @RequestParam String type, @RequestParam String seatNumber, @RequestParam String registrationNumber) {
 
-        Bus bus= busRepository.findById(id).get();
+        Bus bus = busRepository.findById(id).get();
         bus.setName(name);
         bus.setType(type);
-        bus.setSeatNumber(seatNumber);
         bus.setRegistrationNumber(registrationNumber);
         busRepository.save(bus);
 

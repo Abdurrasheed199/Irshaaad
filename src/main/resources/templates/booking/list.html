@@ -4,25 +4,30 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout2}">
 <head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<title>Datatable Sample</title>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 
-
-    <title>Title</title>
-
+   <title>Title</title>
 
 </head>
 <body layout:fragment="content" class="main-margin-top">
 <div class="container">
     <h1>Booking List</h1>
-    <table class ="table table-dark">
+    <!--<input type="text" class="mySearch float-right" placeholder="Search list...">-->
+    <table id="testDtTable" class="table table-striped table-bordered">
+    <!--<table class ="table table-dark">-->
         <thead>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">BookingNumber</th>
-            <th scope="col">Trip</th>
-            <th scope="col">Passenger</th>
-            <th scope="col">BookingDate</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            <th>Id</th>
+            <th>BookingNumber</th>
+            <th>Trip No</th>
+            <th>Passenger</th>
+            <th>BookingDate</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +36,7 @@
             <td th:text="${row.getBookingNumber()}"></td>
             <td th:text="${row.getTrip().getTripNumber()}"></td>
             <td th:text="${row.getPassenger().getFirstName()}"></td>
-            <td th:text="${row.getBookingDate()}"></td>
+            <td th:text="${#dates.format(row.getBookingDate(), 'dd-MMM-yyy hh:mm a')}"></td>
             <td><a th:href="@{/bookings/edit/{id}(id=${row.getId()})}"><button class="btn-danger" name="button">Edit</button></a></td>
             <td><a th:href="@{/bookings/delete/{id}(id=${row.getId()})}"><button class="btn-info" name="button">Delete</button></a></td>
 
@@ -40,10 +45,24 @@
     </table>
 </div>
 <!--<p th:text="${message}"></p>-->
-<script src="/static/js/jquery.min.js"></script>
+<!--<script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/bootstrap.bundle.min.js"></script>
 <script th:src="@{/jquery/jquery.min.js}"></script>
-<script th:src="@{/js/bootstrap.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>-->
+<!--<script th:src="@{/js/newJs.js}"></script>-->
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<th:block layout:fragment="optional" />
+<script>
+$(document).ready(function () {
+
+$('#testDtTable').DataTable();
+
+});
+</script>
+
 
 </body>
 </html>

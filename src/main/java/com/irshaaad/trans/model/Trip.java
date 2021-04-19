@@ -113,6 +113,8 @@ public class Trip {
     public void setAvailableSeats(int availableSeats) {
         this.availableSeats = availableSeats;
     }
+
+
 }
 
 

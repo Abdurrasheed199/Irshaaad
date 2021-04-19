@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      layout:decorate="~{layout2}">
 
 <head>
 
@@ -16,103 +16,41 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="admin-nav col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="sidebar-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" th:href="@{/dashboards/admin}">
-                                <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                           <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Manage Bus
-                            </a>-->
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                <a class="dropdown-item" th:href="@{/buses/create}">Create Bus</a>
-                                <a class="dropdown-item" th:href="@{/buses/list}">All Buses</a>
-                            </div>
-                        </li>
 
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/buses/list}">
-                                All Buses
-                            </a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/trips/list}">All Trips</a>
-                        </li>
-                        <div sec:authorize="hasRole('ADMIN')">
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/bookings/list}">All Bookings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/passengers/list}">All Passengers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/roles/list}">All Roles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/users/list}">All Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/buses/create}">
-                                Create Bus
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/buses/list}">Create Trip</a>
-                        </li>
-                        </div>
-                    </ul>
-<!--
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
-                        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6>-->
-                   <!-- <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Current month
-                            </a>
-                        </li>
-                    </ul>
-                        &lt;!&ndash;<li class=&ndash;&gt;"nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Last quarter
-                            </a>
-                        </li>&ndash;&gt;
-                        &lt;!&ndash;<li class="nav-item">-->
-                           <!-- <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Year-end sale
-                            </a>
-                        </li>
-                    </ul>&ndash;&gt;-->
-                </div>
-            </nav>
-
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <main> <!--role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"-->
+               <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary"><a th:href="@{/logout}"> log out</a></button>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
 
                 <h2>You are Welcome.</h2>
 
             </main>
+            <table>
+            <tr>
+                <td th:text="${user.getFirstName()}"></td>
+                <td th:text="${user.getLastName()}"></td>
+                <td th:text="${user.getEmail()}"></td>
+            </tr>
+            <tr>
+                <td th:text="${user.getPhone()}"></td>
+                <td th:text="${user.getAge()}"></td>
+                <td th:text="${user.getAddress()}"></td>
+            </tr>
+            <tr>
+                <td th:text="${user.getJobTittle()}"></td>
+                <td th:text="${user.getUsername()}"></td>
+                <td th:text="${user.getRoles()}"></td>
+            </tr>
+            </table>
+
+
         </div>
     </div>
 </section>

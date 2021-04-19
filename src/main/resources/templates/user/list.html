@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      layout:decorate="~{layout2}">
 <head>
     <title>Welcome to Irshaaad Transport</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/modern-business.css}">
@@ -14,7 +14,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <!--<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="sidebar-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -24,9 +24,9 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            &lt;!&ndash;<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Manage Bus
-                            </a>
+                            </a>&ndash;&gt;
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                 <a class="dropdown-item" th:href="@{/buses/create}">Create Bus</a>
                                 <a class="dropdown-item" th:href="@{/buses/list}">All Buses</a>
@@ -54,7 +54,7 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/passengers/list}">All Passengers</a>
                         </li>
-                    </ul>
+                    </ul>-->
 
                    <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>Saved reports</span>
@@ -62,14 +62,14 @@
                             <span data-feather="plus-circle"></span>
                         </a>
                     </h6>-->
-                    <ul class="nav flex-column mb-2">
+                   <!-- <ul class="nav flex-column mb-2">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Current month
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                         <!--<li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
@@ -114,7 +114,7 @@
                         <th>EDIT</th>
                         <th>DELETE</th>
                     </tr>
-                    <tr th:each="u : *{users}">
+                    <tr th:each="u : *{staffs}">
                         <td th:text="${u.getId()}"></td>
                         <td th:text="${u.getUsername()}"></td>
                         <!--<td th:text="${u.getRoles().toArray()}"></td>-->

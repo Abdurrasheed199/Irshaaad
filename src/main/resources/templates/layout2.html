@@ -13,6 +13,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/modern-business.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/css/all.css}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="/js/datatable.js"></script>
+
 
 
 </head>
@@ -21,10 +29,10 @@
 <!-- Main Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
     <a class="navbar-brand" th:href="@{/}">IRSHAAAD</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <!--<div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{/}"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
@@ -36,7 +44,7 @@
                 <a class="nav-link" th:href="@{/contact us}"><i class="fa fa-phone"></i>Contact Us</a>
             </li>
 
-            <!--<li class="nav-item dropdown">
+            &lt;!&ndash;<li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;
                       Manage Bus
                   </a>
@@ -64,7 +72,7 @@
                      <a class="dropdown-item" th:href="@{/bookings/list}">All Bookings</a>
                     <a class="dropdown-item" th:href="@{/passengers/list}">All Passengers</a>
                  </div>
-              </li>-->
+              </li>&ndash;&gt;
             <div sec:authorize="isAnonymous()">
                 <li class="nav-item">
                     <a class="nav-link " th:href="@{/users/create}">Register</a>
@@ -87,7 +95,7 @@
             </div>
         </ul>
 
-    </div>
+    </div>-->
 
 
 </nav>
@@ -134,7 +142,7 @@
                             <a class="nav-link" th:href="@{/roles/list}">All Roles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/users/list}">All Users</a>
+                            <a class="nav-link" th:href="@{/staffs/list}">All Staffs</a>
                         </li>
                             <li class="nav-item">
                                 <a class="nav-link" th:href="@{/buses/create}">
@@ -143,6 +151,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" th:href="@{/buses/list}">Create Trip</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/staffs/create}">Create Staff</a>
                             </li>
                         </div>
                     </ul>
@@ -220,6 +231,10 @@
 <script th:src="@{/js/bootstrap.js}"></script>-->
 <script th:src="@{/jquery/jquery.min.js}"></script>
 <script th:src="@{/js/bootstrap.js}"></script>
+<script th:src="@{/js/newJs.js}"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
 <script>
     $('.carousel').carousel({
         interval:5000

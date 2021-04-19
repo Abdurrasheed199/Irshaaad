@@ -17,7 +17,7 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Type</th>
-            <th scope="col">Seat Number</th>
+            <th scope="col">Capacity</th>
             <th scope="col">Registration</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -29,7 +29,7 @@
             <td th:text="${row.getId()}"></td>
             <td th:text="${row.getName()}"></td>
             <td th:text="${row.getType()}"></td>
-            <td th:text="${row.getSeatNumber()}"></td>
+            <td th:text="${row.getCapacity()}"></td>
             <td th:text="${row.getRegistrationNumber()}"></td>
             <td><a th:href="@{/buses/edit/{id}(id=${row.getId()})}"><button class="btn-warning" name="button">Edit</button></a></td>
             <td><a th:href="@{/buses/delete/{id}(id=${row.getId()})}"><button class="btn-danger" name="button">Delete</button></a></td>

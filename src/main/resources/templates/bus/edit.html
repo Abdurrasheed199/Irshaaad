@@ -10,7 +10,7 @@
 
 
 </head>
-<body>
+ <body layout:fragment="content" class="main-margin-top">>
 
 <div  class="col-sm-4 justify-content-center m-auto mt-3 border border-danger" >
     <h1>Edit Bus Form</h1>
@@ -28,10 +28,10 @@
             <input type="text" class="form-control" placeholder="Type" name="type" th:field="*{type}"/>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
             <label>Seat Number:</label>
             <input type="number" placeholder="SeatNumber" class="form-control" name="seatNumber" th:field="*{seatNumber}"/>
-        </div>
+        </div>-->
 
 
         <div class="form-group">

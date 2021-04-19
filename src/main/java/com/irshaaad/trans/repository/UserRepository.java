@@ -11,5 +11,7 @@ public interface UserRepository  extends CrudRepository<User,Long> {
     Optional<User> findByUsername(String username);
     List<Role> findAllByAccountLockedFalse();
     boolean   existsByUsername(String username);
-
+    User findUserByUsername(String username);
+    List<User> findUsersByJobTittle(String jobTittle);
+    List<User> findUsersByJobTittleNot(String jobTittle);
 }

@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout2}">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Spring Boot + JPA + Datatables</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="/js/datatable.js"></script>
+
+</head>
+<body layout:fragment="content" class="main-margin-top">
+<h1>Trip List</h1>
+<table class="table table-danger" id="testingTable">
+    <thead>
+    <tr>
+        <th scope="col">S/N</th>
+        <th scope="col">TripNumber</th>
+        <th scope="col">Bus Reg. No</th>
+        <th scope="col">Take Off Time</th>
+        <th scope="col">Landing Time</th>
+        <th scope="col">Take Off</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Available Seats</th>
+
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

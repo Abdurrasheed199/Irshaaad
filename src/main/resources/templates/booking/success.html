@@ -49,7 +49,7 @@
                         </tr>
                         <tr>
                             <td>TAKE OFF TIME</td>
-                            <td th:text="${trip.getTakeOffTime()}"></td>
+                            <td th:text="${#dates.format(trip.getTakeOffTime(), 'dd-MM-yyy hh:mm a')}"></td>
                         </tr>
                         <tr>
                             <td>TAKE OFF POINT</td>

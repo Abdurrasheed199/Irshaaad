@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface BusRepository extends CrudRepository<Bus, Integer> {
     Bus findBusByRegistrationNumber(String registrationNumber);
-    List<Bus> findBusByCapacityGreaterThanEqual(int capacity);
+   List<Bus> findBusByCapacityGreaterThanEqual(int capacity);
 
 }
